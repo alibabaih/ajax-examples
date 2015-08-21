@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Ajax examples</title>
+        <script type="text/javascript">
+            
+            var xmlhttp; 
+            
+            function getNum() {
+                xmlhttp = new XMLHttpRequest();
+                //set up a listener
+                xmlhttp.onreadystatechange = callback;
+                
+                //making ajax requests
+                xmlhttp.open("GET", "/random.php", true);
+                xmlhttp.send();
+            }
+            
+            //when information comes back from the server
+            function callback() {
+                alert("Ready State: " + xmlhttp.readyState + "Status: " + xmlhttp.status);
+                if(xmlhttp.readyState === 4 && xmlhttp.status === 200) {
+                    document.getElementById('result').innerHTML = xmlhttp.responseText;
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div id="result">
+        
+        </div>
+        <input type="button" value="Get random numder" onclick="getNum()"/>
+    </body>
+</html>

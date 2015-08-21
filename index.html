@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <title>Consume Square Service</title>
+        <script type="text/javascript">
+            
+            var xmlhttp;
+            
+            function drawSquare() {
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = callback; //call back function
+                var rows = document.getElementById("rows").value;
+                var cols = document.getElementById("cols").value;
+                
+                //make it through GET request
+                //var url = "square_service.php?rows=" + rows + "&cols=" + cols;
+                //xmlhttp.open("GET", url, true);
+                //xmlhttp.send();
+                
+                //make it through POST request
+                var url = "square_service.php";
+                xmlhttp.open("POST", url, true);
+                xmlhttp.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+                xmlhttp.send("rows=" + rows + "&cols=" + cols);
+            }    
+            
+            function callback() {
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    document.getElementById("result").innerHTML = xmlhttp.responseText;
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="result"></div>
+        Rows: <input type="text" id="rows"/><br />
+        Cols: <input type="text" id="cols"/><br />
+        <input type="button" value="Draw qguare" onclick="drawSquare()"/>
+    </body>
+</html>
