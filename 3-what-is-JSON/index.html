@@ -1,0 +1,23 @@
+<script>
+    var json = {
+        'firstName' : "Vasily",
+        'lastName' : "Schitov",
+        'company' : "LearnToProgram",
+    }
+    console.log(json.company);
+    
+    var jsonArr = {
+        'employees': [
+            {'name': "John Smith", 'posission': "President"},
+            {'name': "Mary Johnson", 'posission': "Accountant"},
+            {'name': "Fred Mertz", 'posission': "Cheif"},
+        ]
+    }
+    console.log(jsonArr.employees[0].name);
+    console.log(jsonArr.employees.length);
+    
+    for(var i = 0; i < jsonArr.employees.length; i++) {
+        document.write(jsonArr.employees[i].name + ' ' + jsonArr.employees[i].posission + '<br/>');
+    }
+    
+</script>

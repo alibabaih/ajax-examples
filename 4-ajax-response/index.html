@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <title>Displaying JSON</title>
+        <script type="text/javascript">
+            var xmlhttp;
+            
+            function makeCall() {
+                xmlhttp = new XMLHttpRequest();
+                
+                xmlhttp.onreadystatechange = infoReturn;
+                
+                xmlhttp.open("GET", 'service.php', true);
+                xmlhttp.send();
+            }
+            
+            function infoReturn() {
+                if( xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var jsonResponse = xmlhttp.responseText;
+                    jsonResponse = eval("(" + jsonResponse + ")"); //otherwise invalid label error
+                    var output = ""
+                    output += jsonResponse.firstName;
+                    output += jsonResponse.lastName;
+                    output += jsonResponse.company;
+                    output += jsonResponse.age;
+                    document.getElementById("result").innerHTML = output;
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <div id="result"></div>
+        <input type="button" value="call json object" onclick="makeCall()" />
+    </body>
+</html>
