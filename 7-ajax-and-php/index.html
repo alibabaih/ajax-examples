@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <title>Using ajax with jquery</title>
+<!--        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>-->
+        <script type="text/javascript">
+            
+            var xmlhttp;
+            
+            function getRand() {
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = displayResult;
+                xmlhttp.open('GET', 'random.php', true);
+                xmlhttp.send();
+            }
+            
+            function displayResult() {
+                if(xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    var theJson = xmlhttp.responseText;
+                    document.getElementById("result").innerHTML = theJson;
+                }
+            }
+            
+        </script>
+    </head>
+    <body>
+        <p class="red">Test if jQuery works</p>
+        <div id="result"></div>
+        <input type="button" onclick="getRand()" value="get random numbers" />
+
+    </body>
+</html>

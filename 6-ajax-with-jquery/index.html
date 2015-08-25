@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Using ajax with jquery</title>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $('#getPoem').click(function() {
+                    $.ajax({
+                        url: 'poem.php',
+                        success: function(result) {
+                            $('#result').html(result);
+                        }
+                    });
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <p class="red">Test if jQuery works</p>
+        <div id="result"></div>
+        <input type="button" id="getPoem" value="show poem" />
+
+    </body>
+</html>
